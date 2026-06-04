@@ -1,0 +1,39 @@
+---
+name: Sungkyunkwan University
+description: Sungkyunkwan University public developer/API footprint review for APIs.json cataloging.
+url: https://raw.githubusercontent.com/api-evangelist/skku/refs/heads/main/review.yml
+created: '2026-06-03'
+modified: '2026-06-03'
+reviews:
+  - date: '2026-06-03'
+    rating: 1
+    summary: >-
+      Web research confirmed Sungkyunkwan University (SKKU) has no public,
+      documented developer API or open-data portal. The university operates the
+      Kingo Portal single sign-on environment and KINGO-M mobile app, but these
+      are gated to enrolled students, faculty, and staff with no public
+      authentication API, developer registration, or rate-limit documentation.
+      There is no central institutional GitHub organization; public code lives in
+      research-lab and student developer-community orgs (e.g. GDG-SKKU). The
+      official website, English site, and library site all resolve. The LinkedIn
+      company URL is the canonical page (returns 404 to bots but is valid in a
+      browser). No endpoints were fabricated; only verified URLs are recorded.
+    endpoints:
+      - url: https://www.skku.edu/eng/
+        status: 200
+        note: Official English website, resolves.
+      - url: https://eng.skku.edu/
+        status: 200
+        note: Alternate English domain, resolves.
+      - url: https://lib.skku.edu/
+        status: 200
+        note: University library site; no public API documentation found.
+      - url: https://www.skku.edu/eng/CampusLife/ITServices/KingoPortal1_1.do
+        status: 200
+        note: Kingo Portal SSO info page; gated, no developer API docs.
+      - url: https://github.com/GDG-SKKU
+        status: 200
+        note: Google Developer Group on Campus SKKU org; community, not institutional API.
+      - url: https://www.linkedin.com/company/sungkyunkwan-university
+        status: 404
+        note: Canonical LinkedIn page; 404 to bots/curl, valid in browser.

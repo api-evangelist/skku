@@ -1,0 +1,62 @@
+---
+aid: skku
+name: Sungkyunkwan University
+description: >-
+  Sungkyunkwan University (SKKU) is a private research university in Seoul and
+  Suwon, South Korea, with roots dating to 1398, and is ranked #123 in the QS
+  World University Rankings 2025. Its digital footprint centers on the Kingo
+  Portal single sign-on environment, the iCampus learning system, the university
+  library, and the KINGO-M mobile app. As of this review SKKU publishes no
+  public, documented developer API or open-data portal; integration and identity
+  services (Kingo SSO, eduroam) are gated to enrolled students, faculty, and
+  staff. Public software activity exists mainly through research-lab and student
+  developer-community GitHub organizations rather than a central institutional
+  developer program.
+type: Index
+position: Consumer
+access: 3rd-Party
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/skku/refs/heads/main/apis.yml
+tags:
+  - Education
+  - Higher Education
+  - University
+  - Research
+  - South Korea
+  - Seoul
+created: '2026-06-03'
+modified: '2026-06-03'
+specificationVersion: '0.19'
+apis:
+  - aid: skku:kingo-portal
+    name: Kingo Portal (SSO / Identity)
+    description: >-
+      Kingo Portal is SKKU's single sign-on environment that integrates and
+      secures access to university online services (Gmail/Google Workspace,
+      GLS, iCampus, electronic approval, notice boards). Access is gated to
+      enrolled members; there is no publicly documented authentication API or
+      developer registration. eduroam federated Wi-Fi roaming uses the Kingo
+      Portal identity.
+    humanURL: https://www.skku.edu/eng/CampusLife/ITServices/KingoPortal1_1.do
+    tags: [ Identity, SSO, Authentication, Gated ]
+    properties:
+      - type: Documentation
+        url: https://www.skku.edu/eng/CampusLife/ITServices/KingoPortal1_1.do
+common:
+  - type: Website
+    url: https://www.skku.edu/eng/
+  - type: GitHub
+    url: https://github.com/GDG-SKKU
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/sungkyunkwan-university
+  - type: Plans
+    url: plans/skku-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/skku-rate-limits.yml
+  - type: FinOps
+    url: finops/skku-finops.yml
+  - type: Review
+    url: review.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
