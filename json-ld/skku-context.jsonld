@@ -1,0 +1,43 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "skku": "https://www.skku.edu/ns#",
+    "name": "name",
+    "url": "url",
+    "description": "description",
+    "foundingDate": "foundingDate",
+    "address": "address",
+    "AddressLocality": "addressLocality",
+    "AddressCountry": "addressCountry",
+    "api": {
+      "@id": "skku:api",
+      "@container": "@set"
+    },
+    "humanURL": {
+      "@id": "url",
+      "@type": "@id"
+    },
+    "baseURL": {
+      "@id": "skku:baseURL",
+      "@type": "@id"
+    }
+  },
+  "@type": "CollegeOrUniversity",
+  "name": "Sungkyunkwan University",
+  "url": "https://www.skku.edu/eng/",
+  "description": "Sungkyunkwan University (SKKU) is a private research university in Seoul and Suwon, South Korea, with roots dating to 1398.",
+  "foundingDate": "1398",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Seoul",
+    "addressCountry": "KR"
+  },
+  "api": [
+    {
+      "@type": "skku:WebAPI",
+      "name": "Kingo Portal (SSO / Identity)",
+      "url": "https://www.skku.edu/eng/CampusLife/ITServices/KingoPortal1_1.do",
+      "description": "SKKU single sign-on environment securing access to university online services. Access is gated to enrolled members; no publicly documented authentication API."
+    }
+  ]
+}
