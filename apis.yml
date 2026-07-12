@@ -43,6 +43,8 @@ apis:
       - type: Documentation
         url: https://www.skku.edu/eng/CampusLife/ITServices/KingoPortal1_1.do
 common:
+  - type: DomainSecurity
+    url: security/skku-domain-security.yml
   - type: Website
     url: https://www.skku.edu/eng/
   - type: GitHub

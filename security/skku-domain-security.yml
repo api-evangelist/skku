@@ -1,0 +1,17 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.skku.edu
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Jul 25 23:59:59 2026 GMT
+  hsts: false
+domains:
+- domain: skku.edu
+  dnssec: false
+  caa:
+  - ;; connection timed out; no servers could be reached
+  spf: true
+  dmarc: true
+  dmarc_policy: none
