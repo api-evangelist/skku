@@ -1,17 +1,31 @@
 ---
 aid: skku
 name: Sungkyunkwan University
+x-type: university
+x-category: Private Research University
 description: >-
-  Sungkyunkwan University (SKKU) is a private research university in Seoul and
-  Suwon, South Korea, with roots dating to 1398, and is ranked #123 in the QS
-  World University Rankings 2025. Its digital footprint centers on the Kingo
-  Portal single sign-on environment, the iCampus learning system, the university
-  library, and the KINGO-M mobile app. As of this review SKKU publishes no
-  public, documented developer API or open-data portal; integration and identity
-  services (Kingo SSO, eduroam) are gated to enrolled students, faculty, and
-  staff. Public software activity exists mainly through research-lab and student
-  developer-community GitHub organizations rather than a central institutional
-  developer program.
+  Sungkyunkwan University (SKKU) is a private research university in Seoul and Suwon, South Korea,
+  founded in 1398 and operated since 1996 under the Samsung Foundation of Education. Like almost
+  every university it is a federation of buyers rather than an API producer, and this profile is
+  deliberate about which of that federation's surfaces are actually SKKU's engineering. SKKU
+  operates no central developer portal and no API gateway — api.skku.edu, developer.skku.edu,
+  data.skku.edu and status.skku.edu do not resolve — and publishes no OpenAPI for anything. What it
+  does operate, and what almost no university catalog records, is a SAML 2.0 identity provider at
+  kafe.skku.edu registered in eduGAIN through KAFE, the Korea Access Federation: entityID
+  https://kafe.skku.edu/idp/simplesamlphp, scope skku.edu, supporting the REFEDS Research and
+  Scholarship entity category and asserting the REFEDS Sirtfi assurance profile. That machine-readable
+  metadata document is the strongest programmable surface SKKU runs. Its research information portal
+  at pure.skku.edu looks institutional and is not: it CNAMEs to skku.elsevierpure.com and its OAI-PMH
+  provider self-identifies as "Pure OAI Repository" with adminEmail purehosted@elsevier.com, so the
+  live, conformant OAI-PMH 2.0 endpoint there is recorded as an Elsevier Pure TENANCY — SKKU's data
+  on Elsevier's contract — and no Pure specification is saved in this repository. The thesis
+  repository at skku.dcollection.net is likewise a KERIS dCollection tenancy whose robots.txt
+  disallows all crawling and whose OAI paths return an HTML shell. Two SKKU units are Crossref
+  members in their own right (School of Medicine, prefix 10.23838; Institute of Legal Studies, prefix
+  10.17008) and the institution is registered in ROR as 04q78tk20; no DataCite provider or client
+  exists. Everything else — Kingo Portal SSO, iCampus, course registration at sugang.skku.edu, the
+  library discovery layer — is enrolment-gated with no public API, no developer registration and no
+  published rate limits.
 type: Index
 deliveryModel:
   model: saas
@@ -41,39 +55,362 @@ access: 3rd-Party
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/skku.png
 url: https://raw.githubusercontent.com/api-evangelist/skku/refs/heads/main/apis.yml
 tags:
-  - Education
-  - Higher Education
   - University
+  - Higher Education
+  - Education
   - Research
   - South Korea
   - Seoul
+  - Identity Federation
+  - SAML
+  - eduGAIN
+  - Research Repository
+  - OAI-PMH
+  - Open Access
 created: '2026-06-03'
-modified: '2026-06-03'
+modified: '2026-09-01'
 specificationVersion: '0.23'
+x-coverage:
+  state: gated
+  reason: auth_required
+  detail: >-
+    Re-profiled 2026-09-01 under the university pipeline, with the operator axis settled before
+    anything was saved. Sungkyunkwan University publishes no public, documented developer API and no
+    open-data portal, and that absence was established by negative probe rather than assumed:
+    api.skku.edu, developer.skku.edu, data.skku.edu, open.skku.edu, research.skku.edu,
+    repository.skku.edu, dspace.skku.edu, scholarworks.skku.edu, hpc.skku.edu and status.skku.edu all
+    fail to resolve, and www.skku.edu returns 404 for llms.txt, .well-known/security.txt and
+    .well-known/openid-configuration. Every consumable system SKKU runs is behind enrolment
+    authentication — Kingo Portal SSO, iCampus, sugang.skku.edu course registration, the library
+    discovery layer — which is why the state is `gated` rather than `none`: real surfaces exist, and
+    none of them is reachable without credentials. The two exceptions were probed and are recorded:
+    the SAML 2.0 identity provider metadata for kafe.skku.edu, which is public and machine-readable
+    through the eduGAIN aggregate, and the OAI-PMH 2.0 provider at pure.skku.edu, which is public and
+    unauthenticated but is an Elsevier Pure tenancy and is credited as such, not as SKKU engineering.
+    The Pure Web Service itself (pure.skku.edu/ws/api) returns 401 and its documentation canonicalises
+    to api.elsevierpure.com, so even the tenant has no publicly reachable programmable interface there.
+    Deliberate exclusions, each with a reason: github.com/GDG-SKKU is a Google Developer Group student
+    chapter publishing student project code, not SKKU's engineering, so the previous profile's
+    institutional GitHub pointer has been removed rather than re-credited; github.com/skku exists but
+    holds zero repositories and carries no name, description or website, so it is not evidence of an
+    institutional presence; skku.dcollection.net is a KERIS dCollection tenancy whose robots.txt
+    disallows all crawling and whose /oai, /srv/oai and /oai/request paths return the site's HTML
+    shell with HTTP 200 rather than an OAI-PMH response, so it is recorded as a relationship and
+    explicitly not as a harvesting surface; no ORCID institutional membership was found, and the
+    7,574 public ORCID records naming SKKU as an affiliation are a fact about researchers, not a
+    membership. Language was a real factor and was worked around rather than reported as a barrier:
+    the AI guidance site, the privacy policy, the netizen ethics code and course registration exist
+    only on the Korean surface and were probed there. No specification was saved for any surface in
+    this repository, because SKKU operates no contract of its own and every contract that touches it
+    belongs to a vendor.
+  generated: '2026-09-01'
+  method: probed
+  evidence:
+    - url: https://technical.edugain.org/api.php?action=show_entity&entityid=https%3A%2F%2Fkafe.skku.edu%2Fidp%2Fsimplesamlphp
+      status: 200
+      note: >-
+        SAML 2.0 md:EntityDescriptor for entityID https://kafe.skku.edu/idp/simplesamlphp, 9,390
+        bytes. registrationAuthority http://kafe.kreonet.net (KAFE), registered 2022-09-26,
+        shibmd:Scope skku.edu, REFEDS R&S supported, Sirtfi asserted. INSTITUTION-OPERATED.
+    - url: https://kafe.skku.edu/
+      status: 200
+      note: >-
+        IdP host live on SKKU's own domain. /idp/simplesamlphp and /simplesaml/saml2/idp/metadata.php
+        return a Korean WAF interstitial (404); metadata is distributed via the federation aggregate.
+    - url: https://kafe.skku.edu/simplesaml/saml2/idp/SSOService.php
+      status: 400
+      note: >-
+        LIVE, not dead. SimpleSAMLphp answers "No SAML request provided — You accessed the Single
+        Sign On Service interface, but did not provide a SAML Authentication Request", with a session
+        tracking number. The advertised SSO endpoint is real and functioning.
+    - url: https://pure.skku.edu/ws/oai?verb=Identify
+      status: 200
+      note: >-
+        TENANT. Conformant OAI-PMH 2.0 Identify — repositoryName "Pure OAI Repository", adminEmail
+        purehosted@elsevier.com, earliestDatestamp 2025-04-30T16:00:15Z.
+    - url: https://pure.skku.edu/ws/oai?verb=ListMetadataFormats
+      status: 200
+      note: 'Six prefixes: oai_dc, qdc, mods, mods_swepub, xmetadiss, nl_didl. OpenAIRE CERIF 1.2 profile declared.'
+    - url: https://pure.skku.edu/ws/api/524/
+      status: 401
+      note: '"Request not authorized. Please provide a valid API key for access." Elsevier Pure Web Service, gated.'
+    - url: https://pure.skku.edu/
+      status: 200
+      note: >-
+        TENANT confirmed by DNS — pure.skku.edu CNAME skku.elsevierpure.com ->
+        apac.prod.elsevierpure.com. Vanity domain on Elsevier infrastructure.
+    - url: https://api.crossref.org/members?query=sungkyunkwan
+      status: 200
+      note: >-
+        Two SKKU member records — 9930 School of Medicine (prefix 10.23838) and 6576 Institute of
+        Legal Studies (prefix 10.17008). REGISTRY membership.
+    - url: https://api.ror.org/organizations?query=Sungkyunkwan
+      status: 200
+      note: >-
+        ROR https://ror.org/04q78tk20, domain skku.edu, established 1398, GRID grid.264381.a,
+        ISNI 0000 0001 2181 989X, Wikidata Q41085. REGISTRY registration.
+    - url: https://api.datacite.org/providers?query=sungkyunkwan
+      status: 200
+      note: Negative probe. meta.total 0 — no DataCite provider. /clients also returns 0.
+    - url: https://skku.dcollection.net/
+      status: 200
+      note: >-
+        TENANT. KERIS dCollection thesis repository. robots.txt is "User-agent: * / Disallow: /", and
+        /srv/oai, /oai/request?verb=Identify and /dcollection/oai all return the HTML shell, not OAI-PMH.
+    - url: https://icampus.skku.edu/
+      status: 200
+      note: >-
+        Institution-hosted learning system, a Laravel application. /api/v1/courses returns 419 Page
+        Expired (CSRF); /api/v1/accounts/self, /api/graphql and /mod/lti/certs.php return the app 404.
+    - url: https://sugang.skku.edu/
+      status: 200
+      note: Course registration (수강신청), Korean-only, session-gated. No machine-readable course catalog.
+    - url: https://lib.skku.edu/
+      status: 200
+      note: Library discovery layer, single-page app. /api returns 404; no SRU, OpenSearch or catalog API found.
+    - url: https://chatgpt.skku.edu/chatgpt/index.do
+      status: 200
+      note: >-
+        SKKU AI 종합안내 홈페이지 — institution-operated AI guidance portal carrying usage guidelines,
+        academic-integrity cases and the Ministry of Education university AI ethics guideline.
+    - url: https://www.skku.edu/skku/etc/private.do
+      status: 200
+      note: 개인정보 처리방침 — privacy policy, Korean surface only (/eng/etc/private.do returns 404).
+    - url: http://www.skku.edu/sitemap_index.xml
+      status: 200
+      note: sitemapindex advertised from https://www.skku.edu/robots.txt (200).
+    - url: https://api.skku.edu/
+      status: 000
+      note: Negative probe. No API gateway; host does not resolve.
+    - url: https://developer.skku.edu/
+      status: 000
+      note: Negative probe. No developer portal; host does not resolve.
+    - url: https://data.skku.edu/
+      status: 000
+      note: Negative probe. No open-data portal; host does not resolve. open.skku.edu also fails.
+    - url: https://status.skku.edu/
+      status: 000
+      note: Negative probe. No status page; host does not resolve.
+    - url: https://www.skku.edu/llms.txt
+      status: 404
+      note: Negative probe. No agent-directed content policy.
+    - url: https://www.skku.edu/.well-known/security.txt
+      status: 404
+      note: Negative probe. No RFC 9116 security contact.
+    - url: https://www.skku.edu/.well-known/openid-configuration
+      status: 404
+      note: Negative probe. No OIDC discovery; federated identity here is SAML 2.0, not OIDC.
+    - url: https://api.github.com/orgs/skku
+      status: 200
+      note: >-
+        Negative finding. The org exists but has 0 public repositories and no name, description,
+        website or location. Not evidence of an institutional GitHub presence; not credited.
+    - url: https://www.linkedin.com/school/%EC%84%B1%EA%B7%A0%EA%B4%80%EB%8C%80%ED%95%99%EA%B5%90/
+      status: 999
+      note: >-
+        Pointer repaired. The previous profile pointed at /company/sungkyunkwan-university, which
+        returns 404 to every non-browser client — calibration confirmed LinkedIn returns 404 on that
+        path shape for a deliberately fabricated slug too, so it reads as dead. The canonical school
+        page is the Korean-name school URL (성균관대학교, 45,242 followers); 999 is LinkedIn's bot
+        challenge and grades live.
 apis:
-  - aid: skku:kingo-portal
-    name: Kingo Portal (SSO / Identity)
+  - aid: skku:identity-federation
+    name: SKKU SAML 2.0 Identity Provider (KAFE / eduGAIN metadata)
     description: >-
-      Kingo Portal is SKKU's single sign-on environment that integrates and
-      secures access to university online services (Gmail/Google Workspace,
-      GLS, iCampus, electronic approval, notice boards). Access is gated to
-      enrolled members; there is no publicly documented authentication API or
-      developer registration. eduroam federated Wi-Fi roaming uses the Kingo
-      Portal identity.
+      Sungkyunkwan University's institutional identity provider, publishing machine-readable SAML 2.0
+      metadata through the KAFE (Korea Access Federation) aggregate and interfederated internationally
+      through eduGAIN. entityID https://kafe.skku.edu/idp/simplesamlphp on SKKU's own registrable
+      domain, shibmd:Scope skku.edu, OrganizationDisplayName "Sungkyunkwan University",
+      OrganizationURL https://www.skku.edu/. SingleSignOnService and SingleLogoutService are offered
+      over HTTP-Redirect and HTTP-POST at /simplesaml/saml2/idp/, NameIDFormat is transient, and the
+      signing and encryption KeyDescriptors carry a self-issued X.509 certificate for CN=kafe.skku.edu,
+      O=SKKU, OU=Information Service Affairs Team valid to 2032-09-22. The entity supports the REFEDS
+      Research and Scholarship entity category and asserts the REFEDS Sirtfi security incident
+      response assurance profile, with a KAFE jurisdiction attribute of KR. This is institution-operated
+      by definition and it is the single most consequential machine-readable surface SKKU runs — it is
+      also the class of surface a university catalog almost never records.
     humanURL: https://www.skku.edu/eng/CampusLife/ITServices/KingoPortal1_1.do
-    tags: [ Identity, SSO, Authentication, Gated ]
+    baseURL: https://kafe.skku.edu/simplesaml/saml2/idp/SSOService.php
+    tags: [ Identity Federation, SAML, eduGAIN, KAFE, Single Sign-On, Shibboleth Metadata ]
+    x-operator: institution
+    x-operator-evidence: >-
+      Metadata is served for an entityID on kafe.skku.edu — SKKU's own registrable domain — and
+      self-asserts md:Organization "Sungkyunkwan University" with OrganizationURL https://www.skku.edu/.
+      Registered by KAFE (registrationAuthority http://kafe.kreonet.net) on 2022-09-26 and present in
+      the eduGAIN aggregate since 2022-11-16. The certificate subject names SKKU's Information Service
+      Affairs Team.
+    x-developer-usable: false
+    x-developer-note: >-
+      An end-user login federation, not a developer authorization surface. There is no client
+      registration path, no token endpoint and no consent screen an outside developer could integrate
+      against. Recorded because it is institution-operated and machine-readable, not because it is
+      consumable.
+    properties:
+      - type: Examples
+        url: examples/skku-idp-saml-entity-descriptor-example.xml
+      - type: Authentication
+        url: authentication/skku-authentication.yml
+      - type: Conformance
+        url: conformance/skku-conformance.yml
+      - type: Federation
+        url: https://technical.edugain.org/api.php?action=show_entity&entityid=https%3A%2F%2Fkafe.skku.edu%2Fidp%2Fsimplesamlphp
+      - type: Documentation
+        url: https://www.kafe.or.kr/
+  - aid: skku:pure-research-portal
+    name: SKKU Research Portal (Elsevier Pure) — TENANT
+    description: >-
+      SKKU's research information system and public researcher/output profiles, running on Elsevier
+      Pure at pure.skku.edu. This is a genuine institutional fact and one of the very few programmable
+      research surfaces the university has, so the relationship is recorded — but it is recorded as a
+      TENANCY, not as an SKKU API. The data is SKKU's; the contract, the API design and the Pure Web
+      Service are Elsevier's, and no Pure specification is saved in this repository. The one publicly
+      reachable machine surface here is a conformant OAI-PMH 2.0 provider at /ws/oai serving six
+      metadata prefixes (oai_dc, qdc, mods, mods_swepub, xmetadiss, nl_didl) with the OpenAIRE CERIF
+      1.2 profile declared in the response envelope; the Pure Web Service at /ws/api returns 401 and
+      its documentation canonicalises to api.elsevierpure.com, so no programmable Pure interface is
+      open even to the tenant.
+    humanURL: https://pure.skku.edu/
+    baseURL: https://pure.skku.edu/ws/oai
+    tags: [ Research Information, Elsevier Pure, Tenant, OAI-PMH, Research Outputs, CRIS ]
+    x-operator: tenant
+    x-operator-evidence: >-
+      pure.skku.edu is a CNAME to skku.elsevierpure.com -> apac.prod.elsevierpure.com. The OAI
+      provider self-identifies as repositoryName "Pure OAI Repository" with adminEmail
+      purehosted@elsevier.com, and /ws/api canonicalises to
+      https://api.elsevierpure.com/ws/api/documentation/index.html.
+    x-vendor: Elsevier Pure
+    properties:
+      - type: Website
+        url: https://pure.skku.edu/
+      - type: Examples
+        url: examples/skku-pure-oai-identify-example.xml
+      - type: Examples
+        url: examples/skku-pure-oai-listmetadataformats-example.xml
+      - type: Conformance
+        url: conformance/skku-conformance.yml
+  - aid: skku:dcollection-repository
+    name: SKKU dCollection Thesis Repository (KERIS) — TENANT
+    description: >-
+      SKKU's electronic theses and dissertations repository, running on dCollection, the national
+      academic-information distribution platform operated for Korean universities. The collection and
+      its records are SKKU's; the platform, the software and any contract are the vendor's, so this is
+      recorded as a tenancy and no specification is saved for it. It is explicitly NOT recorded as a
+      harvesting surface: robots.txt is "User-agent: * / Disallow: /", and the conventional OAI-PMH
+      paths /oai, /srv/oai, /oai/request and /dcollection/oai all return the site's HTML shell with
+      HTTP 200 rather than an OAI-PMH response — a soft-200, not an endpoint.
+    humanURL: https://skku.dcollection.net/
+    baseURL: https://skku.dcollection.net/
+    tags: [ Research Repository, Theses, dCollection, KERIS, Tenant, Korea ]
+    x-operator: tenant
+    x-operator-evidence: >-
+      Institution-specific subdomain skku.dcollection.net on the shared dcollection.net platform; the
+      page furniture and description metadata are the platform's ("디지털 학술정보 유통시스템"), not SKKU's.
+    x-vendor: dCollection (KERIS)
+    properties:
+      - type: Website
+        url: https://skku.dcollection.net/
+  - aid: skku:crossref-membership
+    name: SKKU Crossref Membership (DOI registration)
+    description: >-
+      Two Sungkyunkwan University units are Crossref members in their own right and register DOIs
+      under their own prefixes — member 9930, Sungkyunkwan University School of Medicine, prefix
+      10.23838; and member 6576, Institute of Legal Studies, Sungkyunkwan University, prefix 10.17008.
+      This is a membership SKKU holds, not a surface SKKU operates: the Crossref REST API is
+      Crossref's contract and none of it is saved or credited here. The relationship is recorded
+      because DOI registration is a real, evidenced, machine-resolvable fact about the institution.
+    humanURL: https://www.crossref.org/
+    baseURL: https://api.crossref.org/members/9930
+    tags: [ DOI, Crossref, Registry, Persistent Identifiers, Scholarly Publishing ]
+    x-operator: registry
+    x-operator-evidence: >-
+      https://api.crossref.org/members?query=sungkyunkwan returns exactly two SKKU records with
+      prefixes 10.23838 and 10.17008. Shared host by design — an identifier registry is shared because
+      many institutions register in it, which is a fact about them, not a misattribution.
+    properties:
+      - type: Conformance
+        url: conformance/skku-conformance.yml
+      - type: Documentation
+        url: https://api.crossref.org/members/9930
+  - aid: skku:ror-registration
+    name: SKKU ROR Registration (organization identifier)
+    description: >-
+      Sungkyunkwan University is registered in the Research Organization Registry as
+      https://ror.org/04q78tk20, with registrable domain skku.edu, established 1398, located in Suwon,
+      Gyeonggi-do, KR, and cross-walked to GRID grid.264381.a, ISNI 0000 0001 2181 989X, Wikidata
+      Q41085 and Crossref Funder ID 501100002647. The record also declares related organizations
+      including Samsung Medical Center, Kangbuk Samsung Hospital, Samsung Seoul Hospital and Samsung
+      Changwon Hospital. ROR's API is ROR's contract; the registration is SKKU's fact.
+    humanURL: https://ror.org/04q78tk20
+    baseURL: https://api.ror.org/organizations/04q78tk20
+    tags: [ Organization Identifier, ROR, Registry, Persistent Identifiers ]
+    x-operator: registry
+    x-operator-evidence: >-
+      https://api.ror.org/organizations?query=Sungkyunkwan returns the ROR record 04q78tk20 whose
+      domains[] is ["skku.edu"] and whose ror_display name is "Sungkyunkwan University".
+    properties:
+      - type: Documentation
+        url: https://ror.org/04q78tk20
+  - aid: skku:kingo-portal
+    name: Kingo Portal (campus SSO and gated student systems)
+    description: >-
+      Kingo Portal is SKKU's single sign-on environment, the front door to the university's own online
+      services — Google Workspace, GLS, iCampus (icampus.skku.edu, a Laravel learning system on SKKU's
+      domain), course registration (sugang.skku.edu), electronic approval and notice boards — plus
+      eduroam federated Wi-Fi roaming, which uses the same institutional identity that the KAFE/eduGAIN
+      identity provider publishes. Every one of these systems is institution-operated and every one is
+      enrolment-gated: there is no publicly documented authentication API, no developer registration,
+      no published rate limits and no machine-readable course catalog. Probed rather than assumed —
+      icampus.skku.edu/api/v1/courses returns 419 (Laravel CSRF) and every other API path returns the
+      application's Korean 404 page.
+    humanURL: https://www.skku.edu/eng/CampusLife/ITServices/KingoPortal1_1.do
+    tags: [ Identity, SSO, Authentication, Gated, Learning Management, Course Registration ]
+    x-operator: institution
+    x-operator-evidence: >-
+      All hosts resolve under skku.edu on SKKU-controlled address space (www.skku.edu 115.145.133.39,
+      lib.skku.edu 115.145.129.144) and the services are described on SKKU's own IT Services pages.
+    x-developer-usable: false
     properties:
       - type: Documentation
         url: https://www.skku.edu/eng/CampusLife/ITServices/KingoPortal1_1.do
+      - type: Authentication
+        url: authentication/skku-authentication.yml
+      - type: Support
+        url: https://www.skku.edu/eng/CampusLife/ITServices/ITCallCenter.do
 common:
-  - type: DomainSecurity
-    url: security/skku-domain-security.yml
   - type: Website
     url: https://www.skku.edu/eng/
-  - type: GitHub
-    url: https://github.com/GDG-SKKU
+  - type: Documentation
+    url: https://www.skku.edu/eng/CampusLife/ITServices/KingoPortal1_1.do
+  - type: Support
+    url: https://www.skku.edu/eng/CampusLife/ITServices/ITCallCenter.do
+  - type: PrivacyPolicy
+    url: https://www.skku.edu/skku/etc/private.do
+  - type: TermsOfService
+    url: https://www.skku.edu/skku/etc/netizen.do
   - type: LinkedIn
-    url: https://www.linkedin.com/company/sungkyunkwan-university
+    url: https://www.linkedin.com/school/%EC%84%B1%EA%B7%A0%EA%B4%80%EB%8C%80%ED%95%99%EA%B5%90/
+  - type: IdentityFederation
+    url: https://technical.edugain.org/api.php?action=show_entity&entityid=https%3A%2F%2Fkafe.skku.edu%2Fidp%2Fsimplesamlphp
+  - type: ResearchRepository
+    url: https://pure.skku.edu/
+  - type: LibraryCatalog
+    url: https://lib.skku.edu/
+  - type: CourseCatalog
+    url: https://sugang.skku.edu/
+  - type: AIPolicy
+    url: https://chatgpt.skku.edu/chatgpt/index.do
+  - type: AITooling
+    url: https://ctl.skku.edu/ctl/index.do
+  - type: Examples
+    url: examples/skku-idp-saml-entity-descriptor-example.xml
+  - type: Authentication
+    url: authentication/skku-authentication.yml
+  - type: Conformance
+    url: conformance/skku-conformance.yml
+  - type: JSONLD
+    url: json-ld/skku-context.jsonld
+  - type: DomainSecurity
+    url: security/skku-domain-security.yml
   - type: Plans
     url: plans/skku-plans-pricing.yml
   - type: RateLimits
