@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Retrieved 2026-09-01 from https://pure.skku.edu/ws/oai?verb=Identify — HTTP 200, verbatim.
+     pure.skku.edu is a TENANT deployment: it CNAMEs to skku.elsevierpure.com ->
+     apac.prod.elsevierpure.com, and the OAI provider self-identifies as "Pure OAI Repository"
+     with adminEmail purehosted@elsevier.com. The records are SKKU's; the software is Elsevier's.
+     method: probed -->
+<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd https://www.openaire.eu/cerif-profile/1.2/ https://www.openaire.eu/schema/cris/1.2/openaire-cerif-profile.xsd">
+  <responseDate>2026-09-01T16:43:34Z</responseDate>
+  <request verb="Identify">https://pure.skku.edu/ws/oai</request>
+  <Identify>
+    <repositoryName>Pure OAI Repository</repositoryName>
+    <baseURL>https://pure.skku.edu/ws/oai</baseURL>
+    <protocolVersion>2.0</protocolVersion>
+    <adminEmail>purehosted@elsevier.com</adminEmail>
+    <earliestDatestamp>2025-04-30T16:00:15Z</earliestDatestamp>
+    <deletedRecord>no</deletedRecord>
+    <granularity>YYYY-MM-DDThh:mm:ssZ</granularity>
+  </Identify>
+</OAI-PMH>

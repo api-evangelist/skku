@@ -1,0 +1,148 @@
+<!-- Retrieved 2026-09-01 from the eduGAIN metadata database:
+     https://technical.edugain.org/api.php?action=show_entity&entityid=https%3A%2F%2Fkafe.skku.edu%2Fidp%2Fsimplesamlphp
+     HTTP 200, application/xml, 9,390 bytes. Registered by KAFE (Korea Access Federation,
+     registrationAuthority http://kafe.kreonet.net) on 2022-09-26; first seen in eduGAIN 2022-11-16.
+     method: probed. Named md:ContactPerson e-mail addresses have been REDACTED under the
+     API Evangelist enrichment PII guardrail; everything else is verbatim as served. -->
+<md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" entityID="https://kafe.skku.edu/idp/simplesamlphp">
+    <md:Extensions>
+      <mdrpi:RegistrationInfo xmlns:mdrpi="urn:oasis:names:tc:SAML:metadata:rpi" registrationAuthority="http://kafe.kreonet.net" registrationInstant="2022-09-26T04:11:00Z">
+        <mdrpi:RegistrationPolicy xml:lang="en">https://www.kafe.or.kr/kafe-mrps-v1.1.pdf</mdrpi:RegistrationPolicy>
+      </mdrpi:RegistrationInfo>
+      <mdattr:EntityAttributes xmlns:mdattr="urn:oasis:names:tc:SAML:metadata:attribute">
+        <saml:Attribute xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" Name="http://macedir.org/entity-category-support" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri">
+          <saml:AttributeValue>http://refeds.org/category/research-and-scholarship</saml:AttributeValue>
+        </saml:Attribute>
+        <saml:Attribute xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" Name="urn:oasis:names:tc:SAML:attribute:assurance-certification" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri">
+          <saml:AttributeValue>https://refeds.org/sirtfi</saml:AttributeValue>
+        </saml:Attribute>
+        <saml:Attribute xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" Name="http://kafe.kreonet.net/jurisdiction" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri">
+          <saml:AttributeValue>KR</saml:AttributeValue>
+        </saml:Attribute>
+      </mdattr:EntityAttributes>
+    </md:Extensions>
+    <md:IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+      <md:Extensions>
+        <shibmd:Scope xmlns:shibmd="urn:mace:shibboleth:metadata:1.0" regexp="false">skku.edu</shibmd:Scope>
+        <mdui:UIInfo xmlns:mdui="urn:oasis:names:tc:SAML:metadata:ui">
+          <mdui:DisplayName xml:lang="en">Sungkyunkwan University</mdui:DisplayName>
+          <mdui:Description xml:lang="en">Sungkyunkwan University</mdui:Description>
+          <mdui:InformationURL xml:lang="en">https://www.skku.edu</mdui:InformationURL>
+          <mdui:PrivacyStatementURL xml:lang="en">https://lib.skku.edu/#guide/personal</mdui:PrivacyStatementURL>
+          <mdui:Logo height="19" width="62">https://kafe.skku.edu/skku_logo_small.png</mdui:Logo>
+        </mdui:UIInfo>
+        <mdui:DiscoHints xmlns:mdui="urn:oasis:names:tc:SAML:metadata:ui">
+          <mdui:GeolocationHint>geo:37.589094,126.991961</mdui:GeolocationHint>
+          <mdui:GeolocationHint>geo:37.293821,126.974476</mdui:GeolocationHint>
+        </mdui:DiscoHints>
+      </md:Extensions>
+      <md:KeyDescriptor use="signing">
+        <ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+          <ds:X509Data>
+            <ds:X509Certificate>
+MIIGYjCCBEqgAwIBAgIJANjJGOyS2wQWMA0GCSqGSIb3DQEBCwUAMIGQMQ0wCwYD
+VQQKEwRTS0tVMSkwJwYDVQQLEyBJbmZvcm1hdGlvbiBTZXJ2aWNlIEFmZmFpcnMg
+VGVhbTEfMB0GCSqGSIb3DQEJARYQamguanVuZ0Bza2t1LmVkdTEOMAwGA1UEBxMF
+U2VvdWwxCzAJBgNVBAYTAktSMRYwFAYDVQQDEw1rYWZlLnNra3UuZWR1MB4XDTIy
+MDkyMzA3NDcxM1oXDTMyMDkyMjA3NDcxM1owgZAxDTALBgNVBAoTBFNLS1UxKTAn
+BgNVBAsTIEluZm9ybWF0aW9uIFNlcnZpY2UgQWZmYWlycyBUZWFtMR8wHQYJKoZI
+hvcNAQkBFhBqaC5qdW5nQHNra3UuZWR1MQ4wDAYDVQQHEwVTZW91bDELMAkGA1UE
+BhMCS1IxFjAUBgNVBAMTDWthZmUuc2trdS5lZHUwggIiMA0GCSqGSIb3DQEBAQUA
+A4ICDwAwggIKAoICAQD1npRiFVXXMKRSuXKxYfuCvMq7EuMd5eI4rZCfEvBPpr48
+KnPY0tGEIAlBZgkGdgFduaLA0hN4Y+R0kgLtibG8UycilcdbyOEwIB8aseD/0iuk
+F4+5RhUWTmOZz3rGTkHJYgIlf0y0/KekDSadKskNWMlkABB2pQu41OY8ufYsjwLf
+JPpEuWJT6V4kV48RnKjr2omIlUn0KhW0uzqRtwh486R09eicQcEyrhYOO53ZxzVC
+98+f5QK9y1W03O6bXIt9AzMGhYK0/Fm9364nu3FYTaTSl3JKYhfJDIGMvrM4eCZs
+EsAn5YYZf4TMhKQ56zjWYXaNEQvo479LQJwA8ZlJY1xw5SjkYmz5pHfNH5exJE83
+rJvLV+DlO+QuFPLNyWhjqzK+/QY9DMZLzZZnhbJ31AoeJ625m6hm80vvPQFCy/t2
+iDS3EQg447SFX0FjfNy26YNsouvjHbgrxTK1AXqCotmgb0R+n4gPikq+ZTZgHi8V
+yjTeEsUR2v+dGRTQbymKSjn25B571NAToiV7NhLoLMevQHCihlww9sQC8+Ezc06k
+6xKyXPwadMKfxUoNuathDMNUCeiXPeY+p3ctZH4wllZ71WEovn+j3mPxnsiYeDmI
+Yehx2u7mXMMTNoTpMmBqlpEJxH32VTwPN8RO7YoOcNiDj+GQ2Ywt34E0BmNo1QID
+AQABo4G8MIG5MAkGA1UdEwQCMAAwCwYDVR0PBAQDAgXgMDEGA1UdJQQqMCgGCCsG
+AQUFBwMBBggrBgEFBQcDAgYIKwYBBQUHAwMGCCsGAQUFBwMEMCwGCWCGSAGG+EIB
+DQQfFh1PcGVuU1NMIEdlbmVyYXRlZCBDZXJ0aWZpY2F0ZTAdBgNVHQ4EFgQUII9e
+Cw17pkh0pWPUoOZcsB/gap8wHwYDVR0jBBgwFoAUII9eCw17pkh0pWPUoOZcsB/g
+ap8wDQYJKoZIhvcNAQELBQADggIBADDq7JBBTP/5Wuw/0NRIX/uvWk/b2a0LfRPr
+W2iQ3SxcZq+AnEGcMRjEX9GVwrvrdx5aS67Nf/jQ9Ryj9lnHcYOYHICjo5bawjjq
+uTNReFtMxpTeLg6j4ttZ0ehdkSRMl5TFDbLbU2tiBYrssIcxRVtxPvEpQvAe1tmo
+ceHdhERy6gtr6rzY+xnIqoDgXuhmWZHBir1kPMIw8WPeyN0yskoaJ3hFC5d8c/G5
+rmcK4mdKpKWQVbu7Nb874Bk+IMpQ08D0JdjijnGXmCG9VLRLUIaO9+zddp1X+eHQ
+9gz3yJ1AiDCb20uPbQtQeYW1yRTWg9zZG/XqBkHfOMYCGecP7sOVFSzrr3tBBk3L
+p817YyxvwSL0kcTCd8W4F090wGWdAkjV3SgL4Xmg8YgkeMTv1QfhTjUNRFoj8aZu
+Gr+Jydq67STpzckAJP8O0s8Hg7NPUVWyAW4o0LRfNn5r7dsei0OSvuZmTbp4FTig
+AuhcKrV/r+PTUAf7DXpSyvwAWa84qsSpYq7bUvAlXlpGPgfS+s+voQBtdlJwT8yE
+7LKNrdz6O2qiM4Gd/F/BjUypu1qhyYek1HTd5PdP074yBgVRjUIMIxrCal3yFx/O
+xpu5nqVBLdYSxKgOZLsn/UnVSrd6J1lkqDXu7gL+J+UsUpVCV89W4c9TXxlUUi0M
+RkX+7BlT
+</ds:X509Certificate>
+          </ds:X509Data>
+        </ds:KeyInfo>
+      </md:KeyDescriptor>
+      <md:KeyDescriptor use="encryption">
+        <ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+          <ds:X509Data>
+            <ds:X509Certificate>
+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
+RkX+7BlT
+</ds:X509Certificate>
+          </ds:X509Data>
+        </ds:KeyInfo>
+      </md:KeyDescriptor>
+      <md:SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://kafe.skku.edu/simplesaml/saml2/idp/SingleLogoutService.php"></md:SingleLogoutService>
+      <md:SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://kafe.skku.edu/simplesaml/saml2/idp/SingleLogoutService.php"></md:SingleLogoutService>
+      <md:NameIDFormat>urn:oasis:names:tc:SAML:2.0:nameid-format:transient</md:NameIDFormat>
+      <md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://kafe.skku.edu/simplesaml/saml2/idp/SSOService.php"></md:SingleSignOnService>
+      <md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://kafe.skku.edu/simplesaml/saml2/idp/SSOService.php"></md:SingleSignOnService>
+    </md:IDPSSODescriptor>
+    <md:Organization>
+      <md:OrganizationName xml:lang="en">Sungkyunkwan University</md:OrganizationName>
+      <md:OrganizationDisplayName xml:lang="en">Sungkyunkwan University</md:OrganizationDisplayName>
+      <md:OrganizationURL xml:lang="en">https://www.skku.edu/</md:OrganizationURL>
+    </md:Organization>
+    <md:ContactPerson contactType="technical">
+      <md:GivenName>System</md:GivenName>
+      <md:EmailAddress>mailto:REDACTED@skku.edu</md:EmailAddress>
+    </md:ContactPerson>
+    <md:ContactPerson xmlns:remd="http://refeds.org/metadata" contactType="other" remd:contactType="http://refeds.org/metadata/contactType/security">
+      <md:GivenName>Security</md:GivenName>
+      <md:EmailAddress>mailto:REDACTED@skku.edu</md:EmailAddress>
+    </md:ContactPerson>
+    <md:ContactPerson contactType="administrative">
+      <md:GivenName>Admin</md:GivenName>
+      <md:EmailAddress>mailto:REDACTED@skku.edu</md:EmailAddress>
+    </md:ContactPerson>
+  </md:EntityDescriptor>

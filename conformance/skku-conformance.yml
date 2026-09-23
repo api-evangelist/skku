@@ -1,0 +1,128 @@
+generated: '2026-09-01'
+method: probed
+source: >-
+  Live probes run 2026-09-01 against SKKU-operated hosts, the eduGAIN metadata database, the
+  Crossref REST API and the DataCite REST API. No conformance below is inferred from prose on a
+  marketing page; every `true` names a document or response that was fetched and read.
+docs: https://www.skku.edu/eng/CampusLife/ITServices/KingoPortal1_1.do
+note: >-
+  Conformance targets are the `standards[]` of the Kin Score `education` regulatory regime. This is a
+  university, so the operator axis matters more than the hit count: an entry is only credited to
+  Sungkyunkwan University when SKKU operates the thing the standard is implemented in. Where the
+  standard is met by a vendor deployment carrying SKKU's data, the entry records `x-operator: tenant`
+  and says whose engineering it is. Reward-only — nothing here is asserted without a fetched response.
+standards:
+- id: saml
+  conforms: true
+  x-operator: institution
+  evidence: >-
+    SKKU operates a SAML 2.0 Identity Provider registered in eduGAIN through KAFE (Korea Access
+    Federation). entityID https://kafe.skku.edu/idp/simplesamlphp, on SKKU's own registrable domain.
+    md:IDPSSODescriptor declares protocolSupportEnumeration urn:oasis:names:tc:SAML:2.0:protocol,
+    SingleSignOnService and SingleLogoutService over both HTTP-Redirect and HTTP-POST bindings at
+    https://kafe.skku.edu/simplesaml/saml2/idp/SSOService.php, NameIDFormat transient, signing and
+    encryption KeyDescriptors carrying an X.509 certificate issued to CN=kafe.skku.edu, O=SKKU,
+    OU=Information Service Affairs Team (valid 2022-09-23 to 2032-09-22), and md:Organization
+    "Sungkyunkwan University" with OrganizationURL https://www.skku.edu/. Metadata retrieved
+    2026-09-01 (HTTP 200, 9,390 bytes) from
+    https://technical.edugain.org/api.php?action=show_entity&entityid=https%3A%2F%2Fkafe.skku.edu%2Fidp%2Fsimplesamlphp
+    and saved at examples/skku-idp-saml-entity-descriptor-example.xml.
+- id: shibboleth
+  conforms: partial
+  x-operator: institution
+  evidence: >-
+    The IdP publishes the Shibboleth metadata extension — <shibmd:Scope
+    xmlns:shibmd="urn:mace:shibboleth:metadata:1.0" regexp="false">skku.edu</shibmd:Scope> — and
+    participates in a Shibboleth-style interfederation (KAFE -> eduGAIN). It is scored `partial`
+    rather than `true` because the deployed software is SimpleSAMLphp, not the Shibboleth IdP: the
+    entityID path is /idp/simplesamlphp and the endpoints are /simplesaml/saml2/idp/*.php. The
+    federation profile is Shibboleth's; the implementation is not.
+- id: oai-pmh
+  conforms: true
+  x-operator: tenant
+  evidence: >-
+    https://pure.skku.edu/ws/oai?verb=Identify returns HTTP 200 with a conformant OAI-PMH 2.0
+    Identify response — protocolVersion 2.0, baseURL https://pure.skku.edu/ws/oai, granularity
+    YYYY-MM-DDThh:mm:ssZ, deletedRecord no, earliestDatestamp 2025-04-30T16:00:15Z. ListMetadataFormats
+    returns six prefixes (oai_dc, qdc, mods, mods_swepub, xmetadiss, nl_didl) and the envelope
+    declares the OpenAIRE CERIF 1.2 profile. CREDITED AS TENANT, NOT AS SKKU ENGINEERING:
+    pure.skku.edu is a CNAME to skku.elsevierpure.com -> apac.prod.elsevierpure.com, the provider
+    self-identifies as repositoryName "Pure OAI Repository", and adminEmail is
+    purehosted@elsevier.com. The records harvested are SKKU's research outputs; the OAI
+    implementation is Elsevier Pure's. Saved at examples/skku-pure-oai-identify-example.xml and
+    examples/skku-pure-oai-listmetadataformats-example.xml.
+- id: crossref
+  conforms: true
+  x-operator: registry
+  evidence: >-
+    https://api.crossref.org/members?query=sungkyunkwan returns two SKKU member records —
+    member 9930 "Sungkyunkwan University School of Medicine" holding DOI prefix 10.23838, and
+    member 6576 "Institute of Legal Studies, Sungkyunkwan University" holding DOI prefix 10.17008.
+    Crossref DOI registration is a membership SKKU units hold, not a surface SKKU operates; recorded
+    as a registry relationship and never as an SKKU contract.
+- id: datacite
+  conforms: false
+  evidence: >-
+    Negative probe. https://api.datacite.org/providers?query=sungkyunkwan returns meta.total 0 and
+    https://api.datacite.org/clients?query=sungkyunkwan returns meta.total 0. No DataCite provider or
+    repository client is registered under Sungkyunkwan University; its DOI registration runs through
+    Crossref instead.
+- id: orcid
+  conforms: false
+  evidence: >-
+    No institutional ORCID membership or SKKU-operated ORCID integration was found. The ORCID public
+    API does return 7,574 records naming Sungkyunkwan University as an affiliation
+    (https://pub.orcid.org/v3.0/expanded-search/?q=affiliation-org-name:"Sungkyunkwan University"),
+    but that is a fact about individual researchers, not an institutional membership and not a
+    machine-readable surface SKKU runs. Not credited.
+- id: lti
+  conforms: false
+  evidence: >-
+    Negative probe. SKKU's learning system iCampus (https://icampus.skku.edu/, HTTP 200) is a
+    Laravel application, not Moodle or Canvas — /api/v1/courses returns 419 "Page Expired" (Laravel
+    CSRF) and /api/v1/accounts/self, /api/graphql and /mod/lti/certs.php all return the application's
+    Korean 404 page. No LTI 1.3 platform configuration, JWKS or tool registration endpoint is
+    publicly reachable.
+- id: scim
+  conforms: false
+  evidence: >-
+    Negative probe. No /scim or /scim/v2 endpoint on any SKKU host; identity provisioning happens
+    inside the gated Kingo Portal environment with no published interface.
+- id: oneroster
+  conforms: false
+  evidence: Negative probe. No OneRoster endpoint or claim found on any SKKU host.
+- id: ed-fi
+  conforms: false
+  evidence: >-
+    Negative probe. Ed-Fi is a US K-12 data standard; no implementation, claim or endpoint exists at
+    SKKU and none would be expected of a Korean higher-education institution.
+- id: caliper
+  conforms: false
+  evidence: Negative probe. No Caliper Analytics sensor, endpoint or claim found.
+- id: qti
+  conforms: false
+  evidence: >-
+    Negative probe. No QTI import/export interface is exposed by iCampus or any other public SKKU
+    surface; assessment tooling sits behind Kingo Portal authentication.
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: >-
+    Negative probe. https://www.skku.edu/.well-known/security.txt returns 404, as does
+    https://pure.skku.edu/.well-known/security.txt.
+- id: openid-connect-discovery
+  conforms: false
+  evidence: >-
+    Negative probe. https://www.skku.edu/.well-known/openid-configuration returns 404. SKKU's
+    federated identity is SAML 2.0 through KAFE, not OIDC.
+- id: sitemaps-org
+  conforms: true
+  x-operator: institution
+  evidence: >-
+    http://www.skku.edu/sitemap_index.xml returns HTTP 200 with a sitemapindex document, advertised
+    from https://www.skku.edu/robots.txt (HTTP 200). https://pure.skku.edu/sitemap.xml also returns a
+    sitemapindex, but that one is the Pure tenancy's, not SKKU's own web estate.
+- id: llms-txt
+  conforms: false
+  evidence: >-
+    Negative probe. https://www.skku.edu/llms.txt and https://pure.skku.edu/llms.txt both return 404.
+    No agent-directed content policy is published on any SKKU host.
