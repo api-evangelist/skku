@@ -1,34 +1,32 @@
-# Kin Score artifact — skku — 2026-08-28T221322
+# Kin Score artifact — skku — 2026-09-25T210408
 # The API Evangelist rating (https://github.com/api-evangelist/kin-score). Generated; do not edit.
 ---
 kin_score:
   slug: skku
-  schema_version: 0.15.1
-  scored_at: '2026-08-28'
-  run_ts: 2026-08-28T221322
-  composite: 18.6
-  band: emerging
+  schema_version: 0.23.0
+  scored_at: '2026-09-25'
+  run_ts: 2026-09-25T210408
+  composite: 32.9
+  band: thin
   facets:
-    discoverability: 59.3
-    contract_quality: 10.7
-    governance: 0.0
-    operational_transparency: 26.3
-    developer_ergonomics: 9.5
-    commercial_clarity: 28.9
-    contract_governance: 0.0
-    access_clarity: 28.9
+    discoverability: 62.5
+    contract_quality: 20.4
+    contract_governance: 18.2
+    operational_transparency: 18.9
+    developer_ergonomics: 26.2
+    access_clarity: 47.9
   agent_readiness:
-    score: 2.5
-    band: human-only
+    score: 6.3
+    band: agent-aware
     dimensions:
       spec_presence: false
       agentic_access: false
       reversibility_documented: false
       mcp_server: false
-      auth_clarity: false
+      auth_clarity: bearer
       idempotency: false
       error_semantics: false
-      openapi_examples: false
+      openapi_examples: documented
       rate_limit_signal: documented
       event_surface_described: false
       agent_skills: false
@@ -44,5 +42,7 @@ kin_score:
     applies: true
     regime: Education & Research
     regime_id: education
-    score: 20.4
+    score: 32.4
     matched_via: tags
+  provenance:
+    conformance: first-party
