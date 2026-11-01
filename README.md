@@ -1,4 +1,4 @@
-# Sungkyunkwan University (skku)
+# Sungkyunkwan University
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,53 +64,117 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Sungkyunkwan University (SKKU) is a private research university in Seoul and Suwon, South Korea, with roots dating to 1398, and is ranked #123 in the QS World University Rankings 2025. This repository catalogs SKKU's public developer and API footprint as an [APIs.json](https://apisjson.org) provider profile for the API Evangelist network.
+Sungkyunkwan University (SKKU) is a private research university in Seoul and Suwon, South Korea, founded in 1398 and operated since 1996 under the Samsung Foundation of Education. Like almost every university it is a federation of buyers rather than an API producer, and this profile is deliberate about which of that federation's surfaces are actually SKKU's engineering. SKKU operates no central developer portal and no API gateway — api.skku.edu, developer.skku.edu, data.skku.edu and status.skku.edu do not resolve — and publishes no OpenAPI for anything. What it does operate, and what almost no university catalog records, is a SAML 2.0 identity provider at kafe.skku.edu registered in eduGAIN through KAFE, the Korea Access Federation: entityID https://kafe.skku.edu/idp/simplesamlphp, scope skku.edu, supporting the REFEDS Research and Scholarship entity category and asserting the REFEDS Sirtfi assurance profile. That machine-readable metadata document is the strongest programmable surface SKKU runs. Its research information portal at pure.skku.edu looks institutional and is not: it CNAMEs to skku.elsevierpure.com and its OAI-PMH provider self-identifies as "Pure OAI Repository" with adminEmail purehosted@elsevier.com, so the live, conformant OAI-PMH 2.0 endpoint there is recorded as an Elsevier Pure TENANCY — SKKU's data on Elsevier's contract — and no Pure specification is saved in this repository. The thesis repository at skku.dcollection.net is likewise a KERIS dCollection tenancy whose robots.txt disallows all crawling and whose OAI paths return an HTML shell. Two SKKU units are Crossref members in their own right (School of Medicine, prefix 10.23838; Institute of Legal Studies, prefix 10.17008) and the institution is registered in ROR as 04q78tk20; no DataCite provider or client exists. Everything else — Kingo Portal SSO, iCampus, course registration at sugang.skku.edu, the library discovery layer — is enrolment-gated with no public API, no developer registration and no published rate limits.
 
-- APIs.json: <https://raw.githubusercontent.com/api-evangelist/skku/refs/heads/main/apis.yml>
-- Naftiko Run: <https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=skku-api-evangelist&utm_content=repo>
+**Areas:** University · Higher Education · Education · Research · South Korea · Seoul · Identity Federation · SAML · eduGAIN · Research Repository · OAI-PMH · Open Access
 
-## Type
+## Sungkyunkwan University on APIs.io
 
-- Index
-- Consumer
-- 3rd-Party
+Everything profiled for Sungkyunkwan University is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/skku/](https://apis.io/providers/skku/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (6)
 
-Education, Higher Education, University, Research, South Korea, Seoul
+- [SKKU SAML 2.0 Identity Provider (KAFE / eduGAIN metadata)](https://apis.io/apis/skku/identity-federation/) — Sungkyunkwan University's institutional identity provider, publishing machine-readable SAML 2.0 metadata through the KAFE (Korea Access Federation)…
+- [SKKU Research Portal (Elsevier Pure) — TENANT](https://apis.io/apis/skku/pure-research-portal/) — SKKU's research information system and public researcher/output profiles, running on Elsevier Pure at pure.skku.edu. This is a genuine institutional fact…
+- [SKKU dCollection Thesis Repository (KERIS) — TENANT](https://apis.io/apis/skku/dcollection-repository/) — SKKU's electronic theses and dissertations repository, running on dCollection, the national academic-information distribution platform operated for Korean…
+- [SKKU Crossref Membership (DOI registration)](https://apis.io/apis/skku/crossref-membership/) — Two Sungkyunkwan University units are Crossref members in their own right and register DOIs under their own prefixes — member 9930, Sungkyunkwan University…
+- [SKKU ROR Registration (organization identifier)](https://apis.io/apis/skku/ror-registration/) — Sungkyunkwan University is registered in the Research Organization Registry as https://ror.org/04q78tk20, with registrable domain skku.edu, established…
+- [Kingo Portal (campus SSO and gated student systems)](https://apis.io/apis/skku/kingo-portal/) — Kingo Portal is SKKU's single sign-on environment, the front door to the university's own online services — Google Workspace, GLS, iCampus…
 
-## APIs
+### Published properties
 
-As of this review SKKU publishes no public, documented developer API or open-data portal. The one cataloged entry reflects a gated identity system, not an open API:
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-- **Kingo Portal (SSO / Identity)** — SKKU's single sign-on environment integrating university online services; gated to enrolled members, no public authentication API. Docs: <https://www.skku.edu/eng/CampusLife/ITServices/KingoPortal1_1.do>
+#### JSON-LD (1)
 
-## Plans, Rate Limits & FinOps
+Linked-data contexts for the provider's vocabulary.
 
-- Plans & Pricing: [plans/skku-plans-pricing.yml](plans/skku-plans-pricing.yml)
-- Rate Limits: [rate-limits/skku-rate-limits.yml](rate-limits/skku-rate-limits.yml)
-- FinOps: [finops/skku-finops.yml](finops/skku-finops.yml)
+- [Skku Context](https://apis.io/jsonld/skku/skku-context/)
 
-## Timestamps
+#### Security (2)
 
-- Created: 2026-06-03
-- Modified: 2026-06-03
+Authentication, trust centre, and vulnerability disclosure.
 
-## Common Properties
+- [Skku Authentication](https://apis.io/security/skku/skku-authentication/)
+- [Skku Domain Security](https://apis.io/security/skku/skku-domain-security/)
 
-- Website: <https://www.skku.edu/eng/>
-- GitHub (community org): <https://github.com/GDG-SKKU>
-- LinkedIn: <https://www.linkedin.com/company/sungkyunkwan-university>
-- Review: [review.yml](review.yml)
+#### Plans and pricing (1)
 
-## Notes
+Published plans, tiers and prices.
 
-- No public developer portal, open-data portal, or documented REST API was found during research.
-- Identity and access run through the gated Kingo Portal SSO and eduroam federation, available only to enrolled students, faculty, and staff.
-- There is no central institutional GitHub organization; public code is published by research labs and student developer communities (e.g. GDG-SKKU), not by a university API program.
-- The LinkedIn company URL is the canonical page; it returns 404 to automated bots but resolves in a browser.
-- No endpoints, base URLs, or properties were fabricated. Only URLs verified live (or noted as bot-blocked) are recorded.
+- [Skku Plans Pricing](https://apis.io/plans/skku/skku-plans-pricing/)
 
-## Maintainers
+#### Rate limits (1)
 
-- Kin Lane — <kin@apievangelist.com>
+Published request limits.
+
+- [Skku Rate Limits](https://apis.io/rate-limits/skku/skku-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Skku Finops](https://apis.io/finops/skku/skku-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.skku.edu/eng/)
+- [Documentation](https://www.skku.edu/eng/CampusLife/ITServices/KingoPortal1_1.do)
+- [Support](https://www.skku.edu/eng/CampusLife/ITServices/ITCallCenter.do)
+- [Terms of service](https://www.skku.edu/skku/etc/netizen.do)
+- [Privacy policy](https://www.skku.edu/skku/etc/private.do)
+
+## API Evangelist rating
+
+**Kin Score 26.8** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 62.5 |
+| Contract quality | 20.4 |
+| Contract governance | 18.2 |
+| Operational transparency | 5.3 |
+| Developer ergonomics | 26.2 |
+| Access clarity | 26.3 |
+
+**Agent readiness 4.4** — human-only
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | documented (partial credit) |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 32.4** — Education & Research
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/skku/](https://apis.io/providers/skku/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Sungkyunkwan University: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/skku/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
